@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+</head>
+
+
+
+<body>
+
+<form action="../devicestore" style="margin: 10px">
+    系统名称：<input text="text" name="system" placeholder="请输入系统名称" value="{{ system }}" style="margin-right: 10px"/>
+    型号：<input text="text" name="model" placeholder="请输入型号" value="{{ model }}" style="margin-right: 10px"/>
+    版本号：<input text="text" name="version" placeholder="请输入版本号" value="{{ version }}" style="margin-right: 10px"/>
+    资产管理员：<input text="text" name="propery_admin" placeholder="请输入资产管理员" value="{{ propery_admin }}" style="margin-right: 10px"/>
+    借用人：<input text="text" name="borrow_people" placeholder="请输入借用人" value="{{ borrow_people }}" style="margin-right: 10px"/>
+    资产id：<input text="text" name="id" placeholder="请输入设备资产id" value="{{ id }}" style="margin-right: 20px"/>
+{#    <input type="submit" value="查询">#}
+</form>
+
+
+
+<table border="1px" width="80%" style="border-collapse: collapse;">
+    <a href="/index/query/">查询</a>
+    <tr>
+        <th>序号</th>
+        <th>资产id</th>
+        <th>系统</th>
+        <th>型号</th>
+        <th>版本</th>
+        <th>资产管理员</th>
+        <th>借用人</th>
+        <th>二维码</th>
+        <th>创建时间</th>
+        <th>更新时间</th>
+        <th>操作人</th>
+        <th>操作</th>
+    </tr>
+    {% for device in devices %}
+        <tr>
+            <td align="center">{{ forloop.counter }} </td>
+            <td align="center">{{ device.id }} </td>
+            <td align="center">{{ device.system}} </td>
+            <td align="center">{{ device.model}} </td>
+            <td align="center">{{ device.version}} </td>
+            <td align="center">{{ device.propery_admin}} </td>
+            <td align="center">{{ device.borrow_people}} </td>
+            <td align="center">{{ device.qr_code}} </td>
+            <td align="center">{{ device.ct}} </td>
+            <td align="center">{{ device.ut}} </td>
+            <td align="center">{{ device.operator}} </td>
+{#            <td align="center">#}
+{#                <a href="../sims/edit/?id={{ device.id }}">#}
+{#                    编辑#}
+{#                </a>#}
+{#                <a href="../sims/delete/?id={{ device.id }}">#}
+{#                    删除#}
+{#                </a>#}
+{#            </td>#}
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
